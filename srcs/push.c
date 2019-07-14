@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 20:43:29 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/12 18:37:39 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/14 19:36:19 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void			pa(t_frame *stacks)
 	else
 		stacks->a = create_clist(stacks->b->data, stacks);
 	remove_head(&(stacks->b));
-	// add_list(stacks, PA);
 }
 
 void			pb(t_frame *stacks)
@@ -72,5 +71,4 @@ void			pb(t_frame *stacks)
 	else
 		stacks->b = create_clist(stacks->a->data, stacks);
 	remove_head(&(stacks->a));
-	// add_list(stacks, PB);
 }

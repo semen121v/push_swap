@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 20:37:29 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/13 21:22:08 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/14 17:45:42 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int				ft_check_option(char *option);
 int				is_sorted(t_frame *stacks);
 int				print_usage(void);
 int				get_median(t_clist *stacks);
-int				ft_check_stack(t_clist *stack, int pivot, int size);
+int				ft_check_stack(t_clist *stack, int pivot, int size, int direct);
 int				ft_is_sort_size(t_clist *stack, int size, int direct);
 int				ft_get_min(t_clist *stack);
 int				ft_get_max(t_clist *stack);
@@ -63,6 +63,9 @@ void			ft_sortl(t_frame *stacks, int print);
 void			ft_qsort(t_frame *stacks, int size);
 void			ft_revrotate_op(t_frame *stacks, char op, int print);
 void			ft_push_op(t_frame *stacks, char op, int print);
+void			ft_swap_op(t_frame *stacks, char op, int print);
+void			ft_sort3(t_frame *stacks, int size, int print);
+void			ft_revsort3(t_frame *stacks, int bsize, int print);
 
 void			sa(t_frame *stacks);
 void			sb(t_frame *stacks);

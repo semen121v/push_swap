@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 20:43:07 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/13 22:03:22 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/14 19:36:15 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void		ra(t_frame *stacks)
 		stacks->a->prev->next1 = stacks->a;
 		stacks->a->next1 = NULL;
 		stacks->a = stacks->a->next;
-		// add_list(stacks, RA);
 	}
 }
 
@@ -30,7 +29,6 @@ void		rb(t_frame *stacks)
 		stacks->b->prev->next1 = stacks->b;
 		stacks->b->next1 = NULL;
 		stacks->b = stacks->b->next;
-		// add_list(stacks, RB);
 	}
 }
 

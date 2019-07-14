@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 17:45:21 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/13 21:37:51 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/14 19:52:30 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int		ft_is_sort_size(t_clist *stack, int size, int direct)
 	return (1);
 }
 
-int		ft_check_stack(t_clist *stack, int pivot, int size)
+int		ft_check_stack(t_clist *stack, int pivot, int size, int direct)
 {
 	while (size--)
 	{
-		if (stack->data > pivot)
+		if (direct == ASC && stack->data < pivot)
 			return (0);
-		// else if (direct == DESC && stack->data > pivot)
-		// 	return (0);
+		else if (direct == DESC && stack->data > pivot)
+			return (0);
 		stack = stack->next;
 	}
 	return (1);
@@ -45,12 +45,14 @@ void	ft_push_op(t_frame *stacks, char op, int print)
 
 	if (op == 'a')
 	{
+		ft_printf("pa\n");
 		pa (stacks);
 		if (print)
 			ft_print_ab(stacks);
 	}
 	else if (op == 'b')
 	{
+		ft_printf("pb\n");
 		pb (stacks);
 		if (print)
 			ft_print_ab(stacks);
@@ -59,8 +61,6 @@ void	ft_push_op(t_frame *stacks, char op, int print)
 
 void	ft_revrotate_op(t_frame *stacks, char op, int print)
 {
-	if (print >= 0)
-		ft_printf("rr%c\n", op);
 	if (op == 'a')
 	{
 		ft_printf("rra\n");

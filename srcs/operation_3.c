@@ -6,36 +6,70 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 21:05:23 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/13 21:36:41 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/14 20:25:07 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_get_min(t_clist *stack)
+void	ft_swap_op(t_frame *stacks, char op, int print)
 {
-	int		min;
-
-	min = stack->data;
-	while (stack->next1 != NULL)
+	if (op == 'a')
 	{
-		if (stack->next1->data < min)
-			min = stack->next1->data;
-		stack = stack->next1;
+		sa(stacks);
+		ft_printf("sa\n");
+		if (print)
+			ft_print_ab(stacks);
 	}
-	return (min);
+	else if ( op == 'b')
+	{
+		sb(stacks);
+		ft_printf("sb\n");
+		if (print)
+			ft_print_ab(stacks);
+	}
 }
 
-int		ft_get_max(t_clist *stack)
+void	ft_revsort3(t_frame *stacks, int bsize, int print)
 {
-	int		max;
+	int		asize;
 
-	max = stack->data;
-    while (stack->next1 != NULL)
+	asize = 0;
+	while (bsize > 0)
 	{
-		if (stack->next1->data > max)
-			max = stack->next1->data;
-		stack = stack->next1;
+		if (asize == 2 && stacks->a->data > stacks->a->next->data)
+			ft_swap_op(stacks, 'a', print);
+		if (bsize > 1 && stacks->b->data < stacks->b->next->data)
+			ft_swap_op(stacks, 'b', print);
+		else
+		{
+			ft_push_op(stacks, 'a', print);
+			bsize--;
+			asize++;
+		}
 	}
-	return (max);
+}
+
+void	ft_sort3(t_frame *stacks, int size, int print)
+{
+	int		offsize;
+
+	offsize = 0;
+	while (!ft_is_sort_size(stacks->a, size, ASC) || offsize)
+	{
+		if (stacks->a->data > stacks->a->next->data)
+			ft_swap_op(stacks, 'a', print);
+		else if (offsize)
+		{
+			ft_push_op(stacks, 'a', print);
+			offsize--;
+			size++;
+		}
+		else
+		{
+			ft_push_op(stacks, 'b', print);
+			offsize++;
+			size--;
+		}
+	}
 }

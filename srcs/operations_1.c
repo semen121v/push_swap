@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 17:34:01 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/13 22:15:56 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/14 20:47:21 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,34 +64,39 @@ void		ft_sortl(t_frame *stacks, int print)
 	return ;
 }
 
-// void	ft_revqsort(t_frame *stacks, int size)
-// {
-// 	int		bsize;
-// 	int		asize;
-// 	int		pivot;
-// 	int		is_rr;
+void	ft_revqsort(t_frame *stacks, int size)
+{
+	int		bsize;
+	int		asize;
+	int		pivot;
+	int		is_rr;
 
-// 	bsize = 0;
-// 	asize = 0;
-// 	pivot = get_median(stacks->b);
-// 	is_rr = (size == count_list(stacks->b)) ? 0 : 1;
-// 	if (ft_is_sort_size(stacks->b, size, DESC))
-// 		return (ft_pusha_all(b, a, print, size));
-// 	if (size <= 3)
-// 		return (ft_revsort3(b, a, size, print));
-// 	while (!ft_check_stack(*b, pivot, size, DESC) && size--)
-// 	{
-// 		if ((*b)->value > pivot && ++asize)
-// 			ft_push_op(b, a, 'a', print);
-// 		else if (++bsize)
-// 			ft_rotate_op(b, a, 'b', print);
-// 	}
-// 	pivot = 0;
-// 	while (is_rr && pivot++ < bsize)
-// 		ft_revrotate_op(b, a, 'b', print);
-// 	ft_qsort(a, b, asize, print);
-// 	ft_revqsort(b, a, bsize + size, print);
-// }
+	bsize = 0;
+	asize = 0;
+	pivot = get_median(stacks->b);
+	is_rr = (size == count_list(stacks->b)) ? 0 : 1;
+	if (ft_is_sort_size(stacks->b, size, DESC))
+		return (ft_pusha_all(stacks, size));
+	if (size <= 3)
+		return (ft_revsort3(stacks, size, stacks->print));
+	while (!ft_check_stack(stacks->b, pivot, size, DESC) && size--)
+	{
+		if (stacks->b->data > pivot && ++asize)
+			ft_push_op(stacks, 'a', stacks->print);
+		else if (++bsize)
+		{
+			ft_printf("rb\n");
+			rb(stacks);
+			if (stacks->print)
+				ft_print_ab(stacks);
+		}
+	}
+	pivot = 0;
+	while (is_rr && pivot++ < bsize)
+		ft_revrotate_op(stacks, 'b', stacks->print);
+	ft_qsort(stacks, asize);
+	ft_revqsort(stacks, bsize + size);
+}
 
 void		ft_qsort(t_frame *stacks, int size)
 {
@@ -106,7 +111,10 @@ void		ft_qsort(t_frame *stacks, int size)
 	rr = (size == count_list(stacks->a)) ? 0 : 1;
 	if (ft_is_sort_size(stacks->a, size, ASC))
 		return ;
-	while (!ft_check_stack(stacks->a, pivot, size) && size--)
+	if (size <= 3)
+		return (!rr ? ft_sortl(stacks, stacks->print) : ft_sort3(stacks, size, stacks->print));
+	ft_printf("%d\n", pivot);
+	while (!ft_check_stack(stacks->a, pivot, size, ASC) && size--)
 	{
 		if (stacks->a->data < pivot && ++bsize)
 			ft_push_op(stacks, 'b', stacks->print);
@@ -119,9 +127,10 @@ void		ft_qsort(t_frame *stacks, int size)
 		}
 	}
 	pivot = 0;
-	ft_printf("%d\n", asize + size);
+	ft_printf("ra%d\n", rr);
+	ft_printf("ra%d\n", asize);
 	while (rr && pivot++ < asize)
 		ft_revrotate_op(stacks, 'a', stacks->print);
 	ft_qsort(stacks, asize + size);
-	// ft_revqsort(stacks, bsize);
+	ft_revqsort(stacks, bsize);
  }

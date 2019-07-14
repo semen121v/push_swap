@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 15:36:29 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/13 19:42:34 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/14 20:56:33 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 static int  check_midle(int s)
 {
-  int       i;
+	int		i;
 
-  if(s % 2 == 0)
-    i = (s / 2) - 1;
-  else
-    i = (s / 2) + 1;
-  return (i);
+	i = s / 2;
+	return (i);
 }
 
 static int	*get_mas(t_clist *list, int size)
@@ -64,9 +61,12 @@ int			get_median(t_clist *stacks)
 	int		size;
 	int		j;
 
+	ft_printf("%d\n", count_list(stacks));
+	if (ft_is_sort_size(stacks, count_list(stacks), DESC))
+		return (stacks->data);
 	size = count_list(stacks);
 	mas = get_mas(stacks, size);
     quicksort(mas, 0, size - 1);
 	j = check_midle(size);
-    return(0);
+    return(mas[j]);
  }

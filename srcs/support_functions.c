@@ -6,12 +6,39 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 12:08:14 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/13 14:23:33 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/14 19:41:19 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
+int		ft_get_min(t_clist *stack)
+{
+	int		min;
+
+	min = stack->data;
+	while (stack->next1 != NULL)
+	{
+		if (stack->next1->data < min)
+			min = stack->next1->data;
+		stack = stack->next1;
+	}
+	return (min);
+}
+
+int		ft_get_max(t_clist *stack)
+{
+	int		max;
+
+	max = stack->data;
+    while (stack->next1 != NULL)
+	{
+		if (stack->next1->data > max)
+			max = stack->next1->data;
+		stack = stack->next1;
+	}
+	return (max);
+}
 
 void	remove_head(t_clist **head)
 {
@@ -33,47 +60,6 @@ void	remove_head(t_clist **head)
 		*head = tmp;
 	}
 }
-
-// static void	delete_move(t_frame *stacks, t_moves *move)
-// {
-// 	if ((stacks->moves))
-// 	{
-// 		move->prev->next = move->next;
-// 		move->next->prev = move->prev;
-// 		free(move);
-// 		move = NULL;
-// 	}
-// }
-
-// static void	free_moves(t_frame *stacks)
-// {
-// 	t_moves	*tmp;
-
-// 	if (stacks->moves)
-// 	{
-// 		while (stacks->moves != stacks->moves->next)
-// 		{
-// 			tmp = stacks->moves->next;
-// 			delete_move(stacks, stacks->moves);
-// 			stacks->moves = tmp;
-// 		}
-// 		delete_move(stacks, stacks->moves);
-// 	}
-// 	stacks->moves = NULL;
-// }
-
-// void	add_list(t_frame *stacks, int move)
-// {
-// 	t_moves	*new;
-
-// 	if (!(new = (t_moves*)malloc(sizeof(*new))))
-// 		failed_exit(stacks);
-// 	new->move = move;
-// 	new->next = stacks->moves;
-// 	new->prev = stacks->moves->prev;
-// 	stacks->moves->prev->next = new;
-// 	stacks->moves->prev = new;
-// }
 
 void		free_stacks(t_frame *stacks)
 {
@@ -101,5 +87,4 @@ void		free_stacks(t_frame *stacks)
 		remove_head(&(stacks->b));
 		stacks->b = NULL;
 	}
-	//free_moves(stacks);
 }
