@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 21:05:23 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/14 20:25:07 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:59:05 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_swap_op(t_frame *stacks, char op, int print)
 		if (print)
 			ft_print_ab(stacks);
 	}
-	else if ( op == 'b')
+	else if (op == 'b')
 	{
 		sb(stacks);
 		ft_printf("sb\n");
@@ -50,7 +50,7 @@ void	ft_revsort3(t_frame *stacks, int bsize, int print)
 	}
 }
 
-void	ft_sort3(t_frame *stacks, int size, int print)
+void	ft_sort3(t_frame *stacks, int size)
 {
 	int		offsize;
 
@@ -58,16 +58,16 @@ void	ft_sort3(t_frame *stacks, int size, int print)
 	while (!ft_is_sort_size(stacks->a, size, ASC) || offsize)
 	{
 		if (stacks->a->data > stacks->a->next->data)
-			ft_swap_op(stacks, 'a', print);
+			ft_swap_op(stacks, 'a', stacks->print);
 		else if (offsize)
 		{
-			ft_push_op(stacks, 'a', print);
+			ft_push_op(stacks, 'a', stacks->print);
 			offsize--;
 			size++;
 		}
 		else
 		{
-			ft_push_op(stacks, 'b', print);
+			ft_push_op(stacks, 'b', stacks->print);
 			offsize++;
 			size--;
 		}

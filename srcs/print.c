@@ -6,13 +6,13 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 15:19:08 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/12 19:48:12 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:57:50 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		print_usage(void)
+int			print_usage(void)
 {
 	ft_printf("Usage:\n\t./push_swap \"3 2 4\" OR ./checker \"3 2 4\"\n");
 	return (0);
@@ -27,7 +27,7 @@ static void	ft_print_stack(t_clist *stack)
 	}
 }
 
-void	ft_print_ab(t_frame *stacks)
+void		ft_print_ab(t_frame *stacks)
 {
 	ft_printf("a |");
 	ft_print_stack(stacks->a);

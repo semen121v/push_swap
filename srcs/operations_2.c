@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 17:45:21 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/14 19:52:30 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:56:37 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,17 @@ int		ft_check_stack(t_clist *stack, int pivot, int size, int direct)
 
 void	ft_push_op(t_frame *stacks, char op, int print)
 {
-
 	if (op == 'a')
 	{
 		ft_printf("pa\n");
-		pa (stacks);
+		pa(stacks);
 		if (print)
 			ft_print_ab(stacks);
 	}
 	else if (op == 'b')
 	{
 		ft_printf("pb\n");
-		pb (stacks);
+		pb(stacks);
 		if (print)
 			ft_print_ab(stacks);
 	}

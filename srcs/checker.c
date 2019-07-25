@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 15:09:39 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/13 15:00:47 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/25 22:55:43 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,17 @@ static void	parse_instructions(t_frame *stacks)
 	free(stacks);
 }
 
-int				main(int ac, char **av)
+static int	ft_check_option(char *option)
 {
-	t_frame		*stacks;
-	int			print;
+	if (ft_strnstr(option, "-v", 3))
+		return (1);
+	return (0);
+}
+
+int			main(int ac, char **av)
+{
+	t_frame	*stacks;
+	int		print;
 
 	if (ac < 2)
 		return (0);

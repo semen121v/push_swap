@@ -6,13 +6,13 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 15:36:29 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/14 20:56:33 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/25 22:31:09 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int  check_midle(int s)
+static int	check_midle(int s)
 {
 	int		i;
 
@@ -29,7 +29,7 @@ static int	*get_mas(t_clist *list, int size)
 	i = 0;
 	tmp = list;
 	mas = (int*)malloc(sizeof(int) * size);
-	while(i != size)
+	while (i != size)
 	{
 		mas[i] = tmp->data;
 		tmp = tmp->next;
@@ -38,7 +38,7 @@ static int	*get_mas(t_clist *list, int size)
 	return (mas);
 }
 
-int     	count_list(t_clist *stack)
+int			count_list(t_clist *stack)
 {
 	t_clist	*tmp;
 	int		elements;
@@ -55,18 +55,15 @@ int     	count_list(t_clist *stack)
 	return (elements);
 }
 
-int			get_median(t_clist *stacks)
- {
-	int	    *mas;
-	int		size;
+int			get_median(t_clist *stacks, int size)
+{
+	int		*mas;
 	int		j;
 
-	ft_printf("%d\n", count_list(stacks));
-	if (ft_is_sort_size(stacks, count_list(stacks), DESC))
-		return (stacks->data);
-	size = count_list(stacks);
 	mas = get_mas(stacks, size);
-    quicksort(mas, 0, size - 1);
+	quicksort(mas, 0, size - 1);
 	j = check_midle(size);
-    return(mas[j]);
- }
+	j = mas[j];
+	free(mas);
+	return (j);
+}

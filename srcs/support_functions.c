@@ -6,13 +6,13 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 12:08:14 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/14 19:41:19 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:51:49 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_get_min(t_clist *stack)
+int			ft_get_min(t_clist *stack)
 {
 	int		min;
 
@@ -26,12 +26,12 @@ int		ft_get_min(t_clist *stack)
 	return (min);
 }
 
-int		ft_get_max(t_clist *stack)
+int			ft_get_max(t_clist *stack)
 {
 	int		max;
 
 	max = stack->data;
-    while (stack->next1 != NULL)
+	while (stack->next1 != NULL)
 	{
 		if (stack->next1->data > max)
 			max = stack->next1->data;
@@ -40,7 +40,7 @@ int		ft_get_max(t_clist *stack)
 	return (max);
 }
 
-void	remove_head(t_clist **head)
+void		remove_head(t_clist **head)
 {
 	t_clist	*tmp;
 

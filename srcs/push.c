@@ -6,13 +6,13 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 20:43:29 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/14 19:36:19 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:55:20 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void			failed_exit(t_frame *stacks)
+void		failed_exit(t_frame *stacks)
 {
 	free_stacks(stacks);
 	free(stacks);
@@ -20,7 +20,7 @@ void			failed_exit(t_frame *stacks)
 	exit(1);
 }
 
-t_clist	*create_clist(int data, t_frame *stacks)
+t_clist		*create_clist(int data, t_frame *stacks)
 {
 	t_clist	*head;
 
@@ -36,7 +36,7 @@ t_clist	*create_clist(int data, t_frame *stacks)
 	return (head);
 }
 
-void	add_to_top(t_clist **head, int data, t_frame *stacks)
+void		add_to_top(t_clist **head, int data, t_frame *stacks)
 {
 	t_clist *new;
 
@@ -51,7 +51,7 @@ void	add_to_top(t_clist **head, int data, t_frame *stacks)
 	*head = new;
 }
 
-void			pa(t_frame *stacks)
+void		pa(t_frame *stacks)
 {
 	if (!(stacks->b))
 		return ;
@@ -62,7 +62,7 @@ void			pa(t_frame *stacks)
 	remove_head(&(stacks->b));
 }
 
-void			pb(t_frame *stacks)
+void		pb(t_frame *stacks)
 {
 	if (!(stacks->a))
 		return ;

@@ -6,13 +6,13 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 20:08:16 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/13 19:57:36 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/25 23:31:30 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		is_sorted(t_frame *stacks)
+int			is_sorted(t_frame *stacks)
 {
 	t_clist		*tmp;
 
@@ -28,39 +28,41 @@ int		is_sorted(t_frame *stacks)
 	return (1);
 }
 
+static void	change_values(int *numbers, int pivot, int new, int *hold)
+{
+	numbers[new] = pivot;
+	pivot = new;
+	if (hold[0] < pivot)
+		quicksort(numbers, hold[0], pivot - 1);
+	if (hold[1] > pivot)
+		quicksort(numbers, pivot + 1, hold[1]);
+	return ;
+}
+
 void		quicksort(int *numbers, int left, int right)
 {
-	int		pivot; // разрешающий элемент
-	int		l_hold; //левая граница
-	int		r_hold; // правая граница
+	int		pivot;
+	int		mas[2];
 
-	l_hold = left;
-	r_hold = right;
+	mas[0] = left;
+	mas[1] = right;
 	pivot = numbers[left];
-	while (left < right) // пока границы не сомкнутся
+	while (left < right)
 	{
 		while ((numbers[right] >= pivot) && (left < right))
-			right--; // сдвигаем правую границу пока элемент [right] больше [pivot]
-		if (left != right) // если границы не сомкнулись
+			right--;
+		if (left != right)
 		{
-			numbers[left] = numbers[right]; // перемещаем элемент [right] на место разрешающего
-			left++; // сдвигаем левую границу вправо
+			numbers[left] = numbers[right];
+			left++;
 		}
 		while ((numbers[left] <= pivot) && (left < right))
-			left++; // сдвигаем левую границу пока элемент [left] меньше [pivot]
-		if (left != right) // если границы не сомкнулись
+			left++;
+		if (left != right)
 		{
-			numbers[right] = numbers[left]; // перемещаем элемент [left] на место [right]
-			right--; // сдвигаем правую границу вправо
+			numbers[right] = numbers[left];
+			right--;
 		}
 	}
-	numbers[left] = pivot; // ставим разрешающий элемент на место
-	pivot = left;
-	left = l_hold;
-	right = r_hold;
-	if (left < pivot) // Рекурсивно вызываем сортировку для левой и правой части массива
-		quicksort(numbers, left, pivot - 1);
-	if (right > pivot)
-		quicksort(numbers, pivot + 1, right);
-	return ;
+	change_values(numbers, pivot, left, mas);
 }

@@ -6,13 +6,13 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 15:09:47 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/13 21:21:27 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:54:33 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_print(t_frame *stacks, int ac)
+void		ft_sort_print(t_frame *stacks, int ac)
 {
 	int		size;
 
@@ -25,7 +25,7 @@ void	ft_sort_print(t_frame *stacks, int ac)
 	if (ac <= 4 && count_list(stacks->a) < 4)
 		ft_sortl(stacks, stacks->print);
 	else
-	 	ft_qsort(stacks, size);
+		ft_qsort(stacks, size);
 	if (stacks->print)
 	{
 		ft_printf("END\n");
@@ -33,10 +33,17 @@ void	ft_sort_print(t_frame *stacks, int ac)
 	}
 }
 
-int				main(int ac, char **av)
+static int	ft_check_option(char *option)
 {
-	t_frame		*stacks;
-	int			print;
+	if (ft_strnstr(option, "-v", 3))
+		return (1);
+	return (0);
+}
+
+int			main(int ac, char **av)
+{
+	t_frame	*stacks;
+	int		print;
 
 	if (ac < 2)
 		return (0);
@@ -52,8 +59,9 @@ int				main(int ac, char **av)
 	stacks->b = NULL;
 	read_num(ac, av, 1, stacks);
 	stacks->print = print;
+	stacks->push = 1;
 	ft_sort_print(stacks, ac);
 	free_stacks(stacks);
 	free(stacks);
-	return(0);
+	return (0);
 }
