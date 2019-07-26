@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 20:42:43 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/26 16:51:41 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/26 20:47:33 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,6 @@ int			check_mas(int *num, int s)
 		i++;
 	}
 	return (1);
-}
-
-int			copy_stacks(char **av, int i)
-{
-	int		*num;
-	int		j;
-	int		k;
-
-	j = 0;
-	k = 1;
-	if (i == 1)
-	{
-		av = ft_strsplit(av[j + 1], ' ');	
-		i = mas_len(av);
-		k = 0;
-	}
-	num = (int*)malloc(sizeof(int) * i);
-	while (j != i)
-	{
-		num[j] = ft_atoi(av[j + k]);
-		j++;
-	}
-	quicksort(num, 0, i - 1);
-	if (check_mas(num, i) == 0)
-	{
-		free(num);
-		return (1);
-	}
-	return (0);
 }
 
 void		add_to_tail(t_clist *head, int data, t_frame *stacks)
@@ -75,6 +46,12 @@ void		read_num(int argc, char **argv, int i, t_frame *stacks)
 	int		tmp;
 
 	stacks->a = NULL;
+	if (argc - 1 == 1)
+	{
+		argv = ft_strsplit(argv[1], ' ');	
+		argc = mas_len(argv);
+		i = 0;
+	}
 	while (i != argc)
 	{
 		tmp = ft_atoi(argv[i]);
