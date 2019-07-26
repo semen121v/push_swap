@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 15:09:47 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/25 19:54:33 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/26 16:03:07 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		ft_sort_print(t_frame *stacks, int ac)
 		ft_print_ab(stacks);
 	}
 	if (ac <= 4 && count_list(stacks->a) < 4)
-		ft_sortl(stacks, stacks->print);
+		ft_sortl(stacks);
 	else
 		ft_qsort(stacks, size);
 	if (stacks->print)

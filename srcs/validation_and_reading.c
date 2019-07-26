@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 20:42:43 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/25 23:46:10 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/26 16:51:41 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,33 @@ int			check_mas(int *num, int s)
 	return (1);
 }
 
-int			*copy_stacks(char **av, int i)
+int			copy_stacks(char **av, int i)
 {
 	int		*num;
 	int		j;
+	int		k;
 
 	j = 0;
-	num = (int*)malloc(i * sizeof(int));
+	k = 1;
+	if (i == 1)
+	{
+		av = ft_strsplit(av[j + 1], ' ');	
+		i = mas_len(av);
+		k = 0;
+	}
+	num = (int*)malloc(sizeof(int) * i);
 	while (j != i)
 	{
-		num[j] = ft_atoi(av[j + 1]);
+		num[j] = ft_atoi(av[j + k]);
 		j++;
 	}
-	return (num);
+	quicksort(num, 0, i - 1);
+	if (check_mas(num, i) == 0)
+	{
+		free(num);
+		return (1);
+	}
+	return (0);
 }
 
 void		add_to_tail(t_clist *head, int data, t_frame *stacks)
@@ -76,28 +90,20 @@ int			valid_item(int ac, char **av)
 {
 	int		i;
 	int		j;
-	int		*mas;
 
-	mas = copy_stacks(av, ac - 1);
-	quicksort(mas, 0, (ac - 2));
-	if (check_mas(mas, ac - 1) == 0)
-	{
-		ft_bzero(mas, ac - 1);
-		free(mas);
+	if ((copy_stacks(av, ac - 1)) == 1)
 		return (1);
-	}
-	i = 1;
-	while (i != ac)
+	i = 0;
+	while (++i != ac)
 	{
 		j = 0;
 		while (av[i][j] != '\0')
 		{
 			if (!(av[i][j] >= '0' && av[i][j] <= '9') && av[i][j] != '+' \
-					&& av[i][j] != '-')
+				&& av[i][j] != '-' && av[i][j + 1] == '-' && av[i][j + 1] == '+')
 				return (1);
 			j++;
 		}
-		i++;
 	}
 	return (0);
 }

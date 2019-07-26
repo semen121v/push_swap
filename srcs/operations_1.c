@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 17:34:01 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/25 19:50:34 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/26 15:04:36 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_pusha_all(t_frame *stacks, int size)
 		ft_push_op(stacks, 'a', stacks->print);
 }
 
-void		ft_sort_2(t_frame *stacks, int print)
+void		ft_sort_2(t_frame *stacks)
 {
 	int		min;
 	int		max;
@@ -28,39 +28,29 @@ void		ft_sort_2(t_frame *stacks, int print)
 	while (!ft_is_sort_size(stacks->a, count_list(stacks->a), ASC))
 	{
 		if (stacks->a->data == max)
-		{
 			ra(stacks);
-			ft_printf("ra\n");
-		}
 		else if (stacks->a->next->data == max)
 		{
-			rra(stacks);
 			ft_printf("rra\n");
+			rra(stacks);
 		}
 		else if (stacks->a->data != min && stacks->a->data != max)
 		{
-			sa(stacks);
 			ft_printf("sa\n");
+			sa(stacks);
 		}
-		if (print)
-			ft_print_ab(stacks);
 	}
 }
 
-void		ft_sortl(t_frame *stacks, int print)
+void		ft_sortl(t_frame *stacks)
 {
 	if (count_list(stacks->a) == 2)
 	{
 		if (stacks->a->data > stacks->a->next->data)
-		{
 			ra(stacks);
-			ft_printf("ra\n");
-			if (print)
-				ft_print_ab(stacks);
-		}
 	}
 	else if (count_list(stacks->a) == 3)
-		ft_sort_2(stacks, stacks->print);
+		ft_sort_2(stacks);
 	return ;
 }
 
@@ -107,7 +97,7 @@ void		ft_qsort(t_frame *stacks, int size)
 	if (ft_is_sort_size(stacks->a, size, ASC))
 		return ;
 	if (size <= 3)
-		return (!rr ? ft_sortl(stacks, stacks->print) : ft_sort3(stacks, size));
+		return (!rr ? ft_sortl(stacks) : ft_sort3(stacks, size));
 	while (!ft_check_stack(stacks->a, pivot, size, ASC) && size--)
 	{
 		if (stacks->a->data < pivot && ++bsize)

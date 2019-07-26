@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 20:42:47 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/25 19:52:19 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/26 15:05:39 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void		sa(t_frame *stacks)
 		stacks->a->data = stacks->a->next->data;
 		stacks->a->next->data = tmp;
 	}
+	if (stacks->print)
+		ft_print_ab(stacks);
 }
 
 void		sb(t_frame *stacks)
@@ -34,6 +36,8 @@ void		sb(t_frame *stacks)
 		stacks->b->data = stacks->b->next->data;
 		stacks->b->next->data = tmp;
 	}
+	if (stacks->print)
+		ft_print_ab(stacks);
 }
 
 void		ss(t_frame *stacks)

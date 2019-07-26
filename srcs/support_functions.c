@@ -6,11 +6,21 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 12:08:14 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/25 19:51:49 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/26 16:12:43 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int			mas_len(char **av)
+{
+	int		i;
+
+	i = 0;
+	while (av[i] != NULL)
+		i++;
+	return (i);
+}
 
 int			ft_get_min(t_clist *stack)
 {
