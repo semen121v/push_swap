@@ -6,7 +6,7 @@
 #    By: fshade <fshade@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/26 19:54:23 by eschoen           #+#    #+#              #
-#    Updated: 2019/07/26 18:14:55 by fshade           ###   ########.fr        #
+#    Updated: 2019/07/27 22:47:06 by fshade           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,11 @@ SRCS_PATH = srcs
 
 SRC_FILES1 = checker.c push.c swap.c reverse_rotate.c rotate.c \
 			 support_functions.c sort.c validation_and_reading.c \
-			 print.c validation_2.c
+			 print.c validation_2.c validation_3.c 
 SRC_FILES2 = push_swap.c push.c swap.c reverse_rotate.c rotate.c \
 			 support_functions.c sort.c validation_and_reading.c \
 			 operations_1.c print.c massive_operation.c operations_2.c \
-			 operation_3.c validation_2.c
+			 operation_3.c validation_2.c validation_3.c 
 
 SRCS1 = $(addprefix $(SRCS_PATH)/,$(SRC_FILES1))
 SRCS2 = $(addprefix $(SRCS_PATH)/,$(SRC_FILES2))
@@ -40,7 +40,7 @@ INCLUDES_PATH = includes
 INCLUDES_NAME = push_swap.h get_next_line.h libft.h
 INCLUDES = $(addprefix $(INCLUDES_PATH)/,$(INCLUDE_NAME))
 
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT_PATH = libft
 LIB = $(addprefix $(LIBFT_PATH)/,libft.a)

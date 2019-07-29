@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 15:09:39 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/25 22:55:43 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/27 22:37:11 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int			main(int ac, char **av)
 		return (0);
 	stacks->b = NULL;
 	stacks->print = print;
+	stacks->push = 0;
 	read_num(ac, av, 1, stacks);
 	parse_instructions(stacks);
 	return (0);

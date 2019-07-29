@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 15:09:47 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/26 17:46:13 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/27 22:21:18 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int			main(int ac, char **av)
 		return (0);
 	if ((print = ft_check_option(av[1])))
 	{
+		if (ac == 2)
+			return (0);
 		av++;
 		ac--;
 	}

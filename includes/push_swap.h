@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 20:37:29 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/26 20:47:05 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/27 22:12:59 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int				ft_get_min(t_clist *stack);
 int				ft_get_max(t_clist *stack);
 int				check_mas(int *num, int s);
 int				mas_len(char **av);
+int				return_func(int *mas, char **av, int f);
+int				free_function_1(char **stack);
 t_clist			*create_clist(int data, t_frame *stacks);
 
 void			quicksort(int *numbers, int left, int right);
@@ -66,7 +68,7 @@ void			ft_push_op(t_frame *stacks, char op, int print);
 void			ft_swap_op(t_frame *stacks, char op);
 void			ft_sort3(t_frame *stacks, int size);
 void			ft_revsort3(t_frame *stacks, int bsize, int print);
-void        	free_function(char **stack);
+void			free_function(char **stack);
 
 void			sa(t_frame *stacks);
 void			sb(t_frame *stacks);

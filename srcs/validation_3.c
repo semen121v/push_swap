@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   validation_3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/11 15:19:08 by fshade            #+#    #+#             */
-/*   Updated: 2019/07/27 16:23:51 by fshade           ###   ########.fr       */
+/*   Created: 2019/07/27 21:20:28 by fshade            #+#    #+#             */
+/*   Updated: 2019/07/27 22:42:39 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			print_usage(void)
+int		return_func(int *mas, char **av, int f)
 {
-	ft_printf("Error\nUsage:\n\t./push_swap 3 2 4 OR ./checker \"3 2 4\"\n");
-	return (0);
+	if (f == 1)
+		free_function(av);
+	free(mas);
+	return (1);
 }
 
-static void	ft_print_stack(t_clist *stack)
+int		free_function_1(char **stack)
 {
-	if (stack)
+	int	i;
+
+	i = 0;
+	while (stack[i] != 0)
 	{
-		ft_print_stack(stack->next1);
-		ft_printf(" %d", stack->data);
+		free(stack[i]);
+		i++;
 	}
-}
-
-void		ft_print_ab(t_frame *stacks)
-{
-	ft_printf("a |");
-	ft_print_stack(stacks->a);
-	ft_printf("\nb |");
-	ft_print_stack(stacks->b);
-	ft_printf("\n");
+	free(stack);
+	return (1);
 }

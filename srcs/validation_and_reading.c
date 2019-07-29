@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 20:42:43 by eschoen           #+#    #+#             */
-/*   Updated: 2019/07/26 20:47:33 by fshade           ###   ########.fr       */
+/*   Updated: 2019/07/27 22:29:50 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ int			check_mas(int *num, int s)
 	while (i != s - 1)
 	{
 		if (num[i] == num[i + 1])
+		{
+			free(num);
 			return (0);
+		}
 		i++;
 	}
+	free(num);
 	return (1);
 }
 
@@ -44,13 +48,16 @@ void		add_to_tail(t_clist *head, int data, t_frame *stacks)
 void		read_num(int argc, char **argv, int i, t_frame *stacks)
 {
 	int		tmp;
+	int		f;
 
 	stacks->a = NULL;
+	f = 0;
 	if (argc - 1 == 1)
 	{
-		argv = ft_strsplit(argv[1], ' ');	
+		argv = ft_strsplit(argv[1], ' ');
 		argc = mas_len(argv);
 		i = 0;
+		f = 1;
 	}
 	while (i != argc)
 	{
@@ -61,26 +68,13 @@ void		read_num(int argc, char **argv, int i, t_frame *stacks)
 			add_to_tail(stacks->a, tmp, stacks);
 		i++;
 	}
+	if (f == 1)
+		free_function(argv);
 }
 
 int			valid_item(int ac, char **av)
 {
-	int		i;
-	int		j;
-
 	if ((copy_stacks(av, ac - 1)) == 1)
 		return (1);
-	i = 0;
-	while (++i != ac)
-	{
-		j = 0;
-		while (av[i][j] != '\0')
-		{
-			if (!(av[i][j] >= '0' && av[i][j] <= '9') && av[i][j] != '+' \
-				&& av[i][j] != '-' && av[i][j + 1] == '-' && av[i][j + 1] == '+')
-				return (1);
-			j++;
-		}
-	}
 	return (0);
 }
